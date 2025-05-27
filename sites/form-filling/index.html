@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Interactive Controls Demo</title>
+
+  <!-- simple utility styling, no external assets -->
+  <style>
+    :root {
+      --bg: #f5f7fa;
+      --card: #ffffff;
+      --accent: #4e8cff;
+      --radius: 10px;
+      --shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+      --label: #333;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, sans-serif;
+      background: var(--bg);
+      padding: 2rem 1rem;
+      display: flex;
+      justify-content: center;
+    }
+    main {
+      max-width: 960px;
+      width: 100%;
+      display: grid;
+      gap: 2rem;
+    }
+    .card {
+      background: var(--card);
+      border-radius: var(--radius);
+      padding: 1.75rem 2rem;
+      box-shadow: var(--shadow);
+    }
+    h1, h2 { margin: 0 0 1rem 0; }
+    h2 { font-size: 1.3rem; }
+    label { color: var(--label); font-weight: 500; display: block; margin-bottom: 0.4rem; }
+    input, select, textarea {
+      width: 100%;
+      padding: 0.55rem 0.7rem;
+      border: 1px solid #cfd4da;
+      border-radius: 6px;
+      font-size: 1rem;
+      margin-bottom: 1rem;
+    }
+    input[type="checkbox"],
+    input[type="radio"] {
+      width: auto;
+      margin-right: 0.4rem;
+    }
+    fieldset {
+      border: 1px solid #e3e6ea;
+      border-radius: var(--radius);
+      padding: 1rem 1.25rem 1.2rem;
+      margin-bottom: 1.5rem;
+    }
+    fieldset legend { padding: 0 0.4rem; font-weight: 600; }
+    button {
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      padding: 0.65rem 1.4rem;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+    button:hover { opacity: 0.94; }
+    .row { display: flex; gap: 1rem; }
+    .row > div { flex: 1; }
+  </style>
+</head>
+<body>
+<main>
+
+  <!-- 1) Contact form -->
+  <section class="card">
+    <h2>Contact Form</h2>
+    <form id="contact-form">
+      <div class="row">
+        <div>
+          <label for="first-name">First Name</label>
+          <input id="first-name" name="firstName" type="text" placeholder="Jane" />
+        </div>
+        <div>
+          <label for="last-name">Last Name</label>
+          <input id="last-name" name="lastName" type="text" placeholder="Doe" />
+        </div>
+      </div>
+
+      <label for="email">Email</label>
+      <input id="email" name="email" type="email" placeholder="jane@example.com" />
+
+      <fieldset>
+        <legend>Preferred Contact Method</legend>
+        <label><input type="radio" name="contactMethod" value="email" checked /> Email</label>
+        <label><input type="radio" name="contactMethod" value="phone" /> Phone</label>
+      </fieldset>
+
+      <label for="message">Message</label>
+      <textarea id="message" name="message" rows="4" placeholder="Say hello…"></textarea>
+
+      <button type="submit">Send</button>
+    </form>
+  </section>
+
+  <!-- 2) Survey with various controls -->
+  <section class="card">
+    <h2>Quick Survey</h2>
+    <form id="survey-form">
+      <fieldset>
+        <legend>Devices you own</legend>
+        <label><input type="checkbox" name="device" value="laptop" /> Laptop</label>
+        <label><input type="checkbox" name="device" value="tablet" /> Tablet</label>
+        <label><input type="checkbox" name="device" value="phone" /> Phone</label>
+        <label><input type="checkbox" name="device" value="smartwatch" /> Smart-watch</label>
+      </fieldset>
+
+      <label for="language">Favorite Programming Language</label>
+      <select id="language" name="language">
+        <option value="" hidden>Select one</option>
+        <option>JavaScript</option>
+        <option>Python</option>
+        <option>Go</option>
+        <option>Rust</option>
+        <option>C#</option>
+      </select>
+
+      <label for="multiselect">Frameworks you use (multi-select)</label>
+      <select id="multiselect" name="frameworks" multiple size="4">
+        <option>React</option>
+        <option>Vue</option>
+        <option>Svelte</option>
+        <option>Angular</option>
+        <option>SolidJS</option>
+      </select>
+
+      <label for="experience">Years of coding experience</label>
+      <input id="experience" type="number" name="experience" min="0" max="40" step="1" value="3" />
+
+      <label for="satisfaction">Overall satisfaction</label>
+      <input id="satisfaction" type="range" name="satisfaction" min="0" max="10" value="7" />
+
+      <label for="date">Today’s date</label>
+      <input id="date" type="date" name="date" />
+
+      <button type="submit">Submit Survey</button>
+    </form>
+  </section>
+
+  <!-- 3) Account creation form -->
+  <section class="card">
+    <h2>Create Account</h2>
+    <form id="signup-form">
+      <label for="username">Username</label>
+      <input id="username" name="username" type="text" placeholder="cool_user123" />
+
+      <label for="password">Password</label>
+      <input id="password" name="password" type="password" />
+
+      <label for="avatar">Upload Avatar</label>
+      <input id="avatar" name="avatar" type="file" accept="image/*" />
+
+      <button type="submit">Register</button>
+    </form>
+  </section>
+
+</main>
+</body>
+</html>
