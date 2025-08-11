@@ -1,3 +1,5 @@
 https://seanmcguire12.github.io/stagehand-oopif-sites/sites/hackernews/
 
 https://seanmcguire12.github.io/stagehand-oopif-sites/sites/form-filling/
+
+https://seanmcguire12.github.io/stagehand-oopif-sites/sites/csr/
