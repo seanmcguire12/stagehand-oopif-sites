@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Shadow DOM Button Demo</title>
+</head>
+
+<body>
+<!-- Host element for the shadow tree -->
+<shadow-demo></shadow-demo>
+
+<script>
+  /* Define a custom element whose entire UI lives in a shadow root */
+  class ShadowDemo extends HTMLElement {
+    constructor() {
+      super();
+
+      // 1 — Attach *closed* shadow root so you can inspect it in DevTools
+      const shadow = this.attachShadow({ mode: 'open' });
+
+      // 2 — Build the shadow-DOM structure
+      const wrapper = document.createElement('div');
+
+      const btn = document.createElement('button');
+      btn.textContent = 'Click me';
+
+      const msg = document.createElement('p');
+      msg.textContent = 'button successfully clicked';
+      msg.style.display = 'none';           // hidden until click
+
+      // 3 — Wire up interactivity
+      btn.addEventListener('click', () => {
+        msg.style.display = 'block';
+      });
+
+      // 4 — Apply scoped styles and assemble
+      const style = document.createElement('style');
+      style.textContent = `
+          :host {
+            font-family: system-ui, sans-serif;
+            display: block;
+            padding: 1rem;
+          }
+          button {
+            padding: 0.5rem 1rem;
+            font-size: 1rem;
+            cursor: pointer;
+          }
+          p {
+            margin-top: 1rem;
+            color: green;
+            font-weight: 600;
+          }
+        `;
+
+      wrapper.append(btn, msg);
+      shadow.append(style, wrapper);
+    }
+  }
+
+  customElements.define('shadow-demo', ShadowDemo);
+</script>
+</body>
+</html>
